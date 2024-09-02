@@ -1,0 +1,25 @@
+---
+- name: playbook for creating a webserver
+  hosts: all
+  tasks:
+    - name: Import sec role
+      vars:
+        firm_name: Redhat
+        email_id: admin@redhat.com 
+      import_role: 
+        name: webserver
+
+  pre_tasks:
+    - name: Add a user 
+      user: 
+        name: Athul
+        state: present
+
+  post_tasks:
+    - name: Remove a user
+      user:
+        name: Athul
+        state: absent
+...
+
+
